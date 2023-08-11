@@ -10,25 +10,25 @@ const router = express.Router();
   res.json(fruits)
 }) */
 
-router.get('/:id', (req,res) => {
-  service.show(req, res)
+router.get('/:id', async (req,res,next) => {
+  await service.show(req, res, next)
 })
 
 //query params
-router.get('/', (req, res) => {
-  service.index(res)
+router.get('/', async (req, res) => {
+  await service.index(res)
 })
 
-router.post('/create', (req, res) => {
-  service.store(req, res)
+router.post('/create', async (req, res) => {
+  await service.store(req, res)
 })
 
-router.patch('/update/:id', (req, res) => {
-  service.update(req, res)
+router.patch('/update/:id', async (req, res, next) => {
+  await service.update(req, res, next)
 })
 
-router.delete('/delete/:id', (req, res) => {
-  service.destroy(req, res)
+router.delete('/delete/:id', async (req, res, next) => {
+  await service.destroy(req, res, next)
 })
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const express = require('express');
 const routerApi = require('./routes')
+const {logError, handleError, boomHandleError} = require('./middlewares/error.handler.js')
 
 const app = express()
 const port = 5000
@@ -15,6 +16,10 @@ app.get('/nuevaruta', (req, res) => {
 })
 
 routerApi(app)
+
+app.use(logError)
+app.use(boomHandleError)
+app.use(handleError)
 
 app.listen(port, () => {
   console.log('Mi port: ' + port)
