@@ -3,6 +3,10 @@ const {faker} = require('@faker-js/faker')
 
 const fruits = require('../fruits.json')
 const productsServices = require('../services/products.services.js')
+const validatorHandler = require('../middlewares/validator.handler')
+const { createProductSchema,
+        updateProductSchema,
+        getProductSchema } = require('../schemas/product.schema')
 const service = new productsServices()
 const router = express.Router();
 
@@ -10,7 +14,9 @@ const router = express.Router();
   res.json(fruits)
 }) */
 
-router.get('/:id', async (req,res,next) => {
+router.get('/:id',
+validatorHandler(getProductSchema, 'params'),
+async (req,res,next) => {
   await service.show(req, res, next)
 })
 
