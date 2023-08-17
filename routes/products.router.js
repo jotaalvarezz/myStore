@@ -25,7 +25,9 @@ router.get('/', async (req, res) => {
   await service.index(res)
 })
 
-router.post('/create', async (req, res) => {
+router.post('/create',
+  validatorHandler(createProductSchema, 'body'),
+  async (req, res) => {
   await service.store(req, res)
 })
 

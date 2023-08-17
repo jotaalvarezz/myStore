@@ -1,11 +1,25 @@
 const express = require('express');
 const routerApi = require('./routes')
 const {logError, handleError, boomHandleError} = require('./middlewares/error.handler.js')
+const cors = require('cors')
 
 const app = express()
 const port = 5000
 
 app.use(express.json())
+
+const whritelist = ['http://127.0.0.1:5500', 'https://myapp.co']
+const options = {
+  origin: (origin, callback) => {
+    if(whritelist.includes(origin)){
+      callback(null, true)
+    } else{
+      callback(new Error('No tiene permisos para acceder a esta Api'))
+    }
+  }
+}
+
+app.use(cors(options))
 
 app.get('/', (req,res) => {
   res.send('Bienvenido a mi servidor en express prueba');
