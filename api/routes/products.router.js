@@ -1,7 +1,6 @@
 const express = require('express');
 const {faker} = require('@faker-js/faker')
 
-const fruits = require('../fruits.json')
 const productsServices = require('../services/products.services.js')
 const validatorHandler = require('../middlewares/validator.handler')
 const { createProductSchema,
