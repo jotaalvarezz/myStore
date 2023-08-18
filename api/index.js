@@ -21,11 +21,11 @@ const options = {
 
 app.use(cors(options))
 
-app.get('/', (req,res) => {
+app.get('/api', (req,res) => {
   res.send('Bienvenido a mi servidor en express prueba');
 })
 
-app.get('/nuevaruta', (req, res) => {
+app.get('/api/nuevaruta', (req, res) => {
   res.send("Nueva ruta")
 })
 

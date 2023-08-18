@@ -9,10 +9,6 @@ const { createProductSchema,
 const service = new productsServices()
 const router = express.Router();
 
-/* router.get('/fruits', (req, res) =>  {
-  res.json(fruits)
-}) */
-
 router.get('/:id',
 validatorHandler(getProductSchema, 'params'),
 async (req,res,next) => {
