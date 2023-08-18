@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000
 
 app.use(express.json())
 
-const whritelist = ['http://127.0.0.1:5500', 'https://myapp.co']
+const whritelist = ['http://127.0.0.1:5500', 'https://my-store-swart-nine.vercel.app']
 const options = {
   origin: (origin, callback) => {
     if(whritelist.includes(origin)){
