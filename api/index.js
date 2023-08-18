@@ -1,14 +1,14 @@
 const express = require('express');
 const routerApi = require('./routes')
 const {logError, handleError, boomHandleError} = require('./middlewares/error.handler.js')
-const cors = require('cors')
+/* const cors = require('cors') */
 
 const app = express()
 const port = process.env.PORT || 5000
 
 app.use(express.json())
 
-const whritelist = ['http://127.0.0.1:5500', 'https://my-store-swart-nine.vercel.app']
+/* const whritelist = ['http://127.0.0.1:5500', 'https://my-store-swart-nine.vercel.app']
 const options = {
   origin: (origin, callback) => {
     if(whritelist.includes(origin)){
@@ -19,7 +19,7 @@ const options = {
   }
 }
 
-app.use(cors(options))
+app.use(cors(options)) */
 
 app.get('/api', (req,res) => {
   res.send('Bienvenido a mi servidor en express prueba');
