@@ -1,11 +1,11 @@
 const btn = document.getElementById('btn')
 const tbody = document.getElementById('tbody')
-
+const API_ROUTE = process.env.PORT ? 'https://my-store-swart-nine.vercel.app' : 'http://localhost:5000'
 
 
 async function cargar(){
     try {
-        const res = await axios.get('http://localhost:5000/api/v1/products')
+        const res = await axios.get(API_ROUTE+'/api/v1/products')
         console.log("res ",res)
         tbody.innerHTML = ''
         res.data.forEach(element => {
