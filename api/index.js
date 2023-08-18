@@ -2,15 +2,19 @@ const express = require('express');
 const routerApi = require('./routes')
 const {logError, handleError, boomHandleError} = require('./middlewares/error.handler.js')
 const cors = require('cors')
+require('dotenv/config')
 
 const app = express()
 const port = process.env.PORT || 5000
+
+/* para que node detecte las variables de entorno del archivo.env debe instalar la libreria dotenv */
 
 app.use(express.json())
 
 const whritelist = [process.env.ORIGIN, process.env.ORIGIN2]
 const options = {
   origin: (origin, callback) => {
+    console.log("origen ",whritelist[0]+' '+whritelist[1])
     if(whritelist.includes(origin)){
       callback(null, true)
     } else{
