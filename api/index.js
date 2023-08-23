@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000
 
 app.use(express.json())
 
-const whritelist = [process.env.ORIGIN, process.env.ORIGIN2]
+const whritelist = [process.env.ORIGIN, 'https://mystore-products.netlify.app']
 const options = {
   origin: (origin, callback) => {
     console.log("origen ",whritelist[0]+' '+whritelist[1])
